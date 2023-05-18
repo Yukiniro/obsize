@@ -1,6 +1,6 @@
 {
   "name": "resize-listener",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Simple Start Template",
   "browser": "dist/resize-listener.cjs",
   "module": "dist/resize-listener.mjs",
@@ -12,7 +12,7 @@
     "test": "npx vitest",
     "test:run": "npx vitest run",
     "test:coverrage": "npx vitest --coverage",
-    "publish": "npm run test:run && npm run build && npm publish",
+    "publish": "npm run build && npm publish",
     "prepare": "npx husky install"
   },
   "keywords": [
@@ -48,6 +48,7 @@
     "rollup-plugin-typescript2": "^0.31.2",
     "tslib": "^2.3.1",
     "typescript": "^4.6.4",
+    "vite": "^4.3.7",
     "vitest": "^0.24.3"
   },
   "dependencies": {
