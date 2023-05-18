@@ -1,9 +1,9 @@
 {
-  "name": "resize-listener",
-  "version": "0.0.2",
+  "name": "obsize",
+  "version": "0.0.1",
   "description": "Simple Start Template",
-  "browser": "dist/resize-listener.cjs",
-  "module": "dist/resize-listener.mjs",
+  "browser": "dist/obsize.cjs",
+  "module": "dist/obsize.mjs",
   "types": "dist/src/index.d.ts",
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
@@ -12,7 +12,7 @@
     "test": "npx vitest",
     "test:run": "npx vitest run",
     "test:coverrage": "npx vitest --coverage",
-    "publish": "npm run build && npm publish",
+    "npm:publish": "npm run build && npm publish",
     "prepare": "npx husky install"
   },
   "keywords": [
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yukiniro/resize-listener"
+    "url": "https://github.com/Yukiniro/obsize"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

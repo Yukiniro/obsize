@@ -1,9 +1,9 @@
 import { nanoid } from "nanoid";
 
-type ListenItem = { key: string; once: boolean; fn: ListenHandler };
+type ObserverItem = { key: string; once: boolean; fn: ObserverHandler };
 
-type ListenHandler = () => void;
-type RemoveListenHandler = () => void;
+type ObserverHandler = () => void;
+type RemoveObserverHandler = () => void;
 
 const map = new Map();
 const obs = new ResizeObserver((entries) => {
@@ -12,7 +12,7 @@ const obs = new ResizeObserver((entries) => {
     const fns = map.get(target);
     if (fns?.length) {
       const newFns = [];
-      fns.forEach((item: ListenItem) => {
+      fns.forEach((item: ObserverItem) => {
         const { fn, once } = item;
         fn();
         if (!once) {
@@ -24,11 +24,11 @@ const obs = new ResizeObserver((entries) => {
   });
 });
 
-function listen(
+function observe(
   element: HTMLElement,
-  fn: ListenHandler,
+  fn: ObserverHandler,
   options = { once: false }
-): RemoveListenHandler {
+): RemoveObserverHandler {
   const isElementObserver = map.has(element);
   const elementFns = isElementObserver ? map.get(element) : [];
   const key = nanoid();
@@ -40,7 +40,7 @@ function listen(
   }
   return () => {
     if (map.has(element)) {
-      const fns = map.get(element).filter((item: ListenItem) => {
+      const fns = map.get(element).filter((item: ObserverItem) => {
         return item.key !== key;
       });
       if (fns.length === 0) {
@@ -58,4 +58,4 @@ function clear() {
   obs.disconnect();
 }
 
-export { listen, clear };
+export { observe, clear };

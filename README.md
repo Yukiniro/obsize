@@ -1,6 +1,6 @@
-# resize-listener
+# obsize
 
-`resize-listener` is a tiny library that observes an element's size change.
+`obsize` is a tiny library that observes an element's size change.
 
 ## [Browser Compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API#browser_compatibility)
 
@@ -13,25 +13,25 @@
 ## Install
 
 ```shell
-pnpm add resize-listener -S
-npm install resize-listener -S
-yarn add resize-listener -S
+pnpm add obsize -S
+npm install obsize -S
+yarn add obsize -S
 ```
 
 ## Useage
 
 ```javascript
-import { listen } from "../../src/index";
+import { observe } from "../../src/index";
 
-const unlisten = listen(element, () => { console.log('trigger') });
+const unobserve = observe(element, () => { console.log('trigger') });
 
-// call unlisten could remove the listener
-unlisten()
+// call unobserve could remove the observe
+unobserve()
 ```
 
 ## API
 
-### `listen`
+### `observe`
 
 Observe the size of specified elements.
 
@@ -39,11 +39,11 @@ Observe the size of specified elements.
   - `element` - The element to be observer.
   - `fn` - The function to call when the element's size has changed.
   - `options` - Others cofnig.
-    - `once` - It will auto-remove the listener when `fn` has been called.
+    - `once` - It will auto-remove the observer when `fn` has been called.
 
 ### `clear`
 
-Clear all listeners for any elements.
+Clear all observers for any elements.
 
 ## License
 

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Slider from "./Slider";
-import { listen } from "../../src/index";
+import { observe } from "../../src/index";
 
 function App() {
   const [width, setWidth] = useState(200);
@@ -9,7 +9,7 @@ function App() {
   const domRef = useRef(null);
 
   useEffect(() => {
-    return listen(domRef.current as unknown as HTMLElement, () => {
+    return observe(domRef.current as unknown as HTMLElement, () => {
       console.log("size changed");
     });
   }, []);
