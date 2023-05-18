@@ -1,9 +1,9 @@
 {
-  "name": "starter-node",
-  "version": "1.0.3",
+  "name": "resize-listener",
+  "version": "0.0.1",
   "description": "Simple Start Template",
-  "main": "dist/ssprojet.cjs",
-  "module": "dist/ssprojet.mjs",
+  "browser": "dist/resize-listener.cjs",
+  "module": "dist/resize-listener.mjs",
   "types": "dist/src/index.d.ts",
   "scripts": {
     "build": "rollup -c rollup.config.mjs",
@@ -25,7 +25,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yukiniro/ssprojet"
+    "url": "https://github.com/Yukiniro/resize-listener"
   },
   "devDependencies": {
     "@babel/core": "^7.17.8",

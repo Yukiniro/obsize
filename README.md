@@ -1,21 +1,50 @@
-# starter-node
+# resize-listener
 
-![NPM](https://img.shields.io/npm/l/ssprojet?color=blue&style=flat-square) ![npm](https://img.shields.io/npm/v/ssprojet?color=blue&style=flat-square)
+`resize-listener` is a tiny library that observes an element's size change.
 
-The `starter-node` is a template to start a node project.
+## [Browser Compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Resize_Observer_API#browser_compatibility)
 
-## Features
+- Chrome (64+)
+- Edge (79+)
+- Firefox (69+)
+- Opera (51+)
+- Safari (13.1+)
 
-- `pnpm` - package manager
-- `vitest` - test library
-- `docusaurus` - document library
-- `prettier` - code style formate
-- `eslint` - code quality
-- `husky` - pre-commit
-- `lint-staged` - auto lint for staged files
+## Install
 
-## How to use
+```shell
+pnpm add resize-listener -S
+npm install resize-listener -S
+yarn add resize-listener -S
+```
 
-You could use `degit Yukiniro/starter-node your-project-name` to create a project.
+## Useage
 
-If you have no `degit`. Please install it by `npm install -g degit`.
+```javascript
+import { listen } from "../../src/index";
+
+const unlisten = listen(element, () => { console.log('trigger') });
+
+// call unlisten could remove the listener
+unlisten()
+```
+
+## API
+
+### `listen`
+
+Observe the size of specified elements.
+
+- Params
+  - `element` - The element to be observer.
+  - `fn` - The function to call when the element's size has changed.
+  - `options` - Others cofnig.
+    - `once` - It will auto-remove the listener when `fn` has been called.
+
+### `clear`
+
+Clear all listeners for any elements.
+
+## License
+
+MIT license.
