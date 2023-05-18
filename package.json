@@ -1,7 +1,7 @@
 {
   "name": "obsize",
-  "version": "0.0.1",
-  "description": "Simple Start Template",
+  "version": "0.0.2",
+  "description": "🧐 Element size observer based on ResizeObserver",
   "browser": "dist/obsize.cjs",
   "module": "dist/obsize.mjs",
   "types": "dist/src/index.d.ts",
@@ -16,10 +16,11 @@
     "prepare": "npx husky install"
   },
   "keywords": [
-    "vite",
-    "vitest",
-    "docusaurus",
-    "template"
+    "resize",
+    "observer",
+    "sensor",
+    "resizeobserver",
+    "element-size"
   ],
   "author": "Yukiniro",
   "license": "MIT",
