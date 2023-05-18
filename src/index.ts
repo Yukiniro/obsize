@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 type Size = { width: number; height: number };
 type ListenItem = { key: string; once: boolean; fn: ListenHandler };
 
-type ListenHandler = () => Size;
+type ListenHandler = () => void;
 type RemoveListenHandler = () => void;
 
 const map = new Map();
