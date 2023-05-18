@@ -1,6 +1,5 @@
 import { nanoid } from "nanoid";
 
-type Size = { width: number; height: number };
 type ListenItem = { key: string; once: boolean; fn: ListenHandler };
 
 type ListenHandler = () => void;
@@ -30,24 +29,26 @@ function listen(
   fn: ListenHandler,
   options = { once: false }
 ): RemoveListenHandler {
-  const elementFns = map.get(element) || [];
+  const isElementObserver = map.has(element);
+  const elementFns = isElementObserver ? map.get(element) : [];
   const key = nanoid();
   const { once } = options;
-
-  if (elementFns.length === 0) {
-    obs.observe(element);
-  }
-
   elementFns.push({ key, once, fn });
+  if (!isElementObserver) {
+    obs.observe(element);
+    map.set(element, elementFns);
+  }
   return () => {
-    const fns = map.get(element).filter((item: ListenItem) => {
-      return item.key !== key;
-    });
-    if (fns.length === 0) {
-      map.delete(element);
-      obs.unobserve(element);
-    } else {
-      map.set(element, fns);
+    if (map.has(element)) {
+      const fns = map.get(element).filter((item: ListenItem) => {
+        return item.key !== key;
+      });
+      if (fns.length === 0) {
+        map.delete(element);
+        obs.unobserve(element);
+      } else {
+        map.set(element, fns);
+      }
     }
   };
 }
