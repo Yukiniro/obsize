@@ -1,6 +1,4 @@
-import { nanoid } from "nanoid";
-
-type ObserverItem = { key: string; once: boolean; fn: ObserverHandler };
+type ObserverItem = { once: boolean; fn: ObserverHandler };
 
 type ObserverHandler = () => void;
 type RemoveObserverHandler = () => void;
@@ -31,9 +29,8 @@ function observe(
 ): RemoveObserverHandler {
   const isElementObserver = map.has(element);
   const elementFns = isElementObserver ? map.get(element) : [];
-  const key = nanoid();
   const { once } = options;
-  elementFns.push({ key, once, fn });
+  elementFns.push({ once, fn });
   if (!isElementObserver) {
     obs.observe(element);
     map.set(element, elementFns);
@@ -41,7 +38,7 @@ function observe(
   return () => {
     if (map.has(element)) {
       const fns = map.get(element).filter((item: ObserverItem) => {
-        return item.key !== key;
+        return item.fn !== fn;
       });
       if (fns.length === 0) {
         map.delete(element);
