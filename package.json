@@ -22,6 +22,9 @@
     "resizeobserver",
     "element-size"
   ],
+  "files": [
+    "dist"
+  ],
   "author": "Yukiniro",
   "license": "MIT",
   "repository": {
