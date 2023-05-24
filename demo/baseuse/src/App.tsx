@@ -10,13 +10,20 @@ function App() {
 
   useEffect(() => {
     return observe(domRef.current as unknown as HTMLElement, () => {
-      console.log("size changed");
+      console.log("element size changed");
+    });
+  }, []);
+
+  useEffect(() => {
+    return observe(document.body as unknown as HTMLElement, () => {
+      console.log("body size changed");
     });
   }, []);
 
   return (
     <div>
       <h1>DEMO</h1>
+      <h2>Open console panel.</h2>
       <Slider
         min={0}
         max={500}
