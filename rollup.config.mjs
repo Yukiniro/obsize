@@ -1,6 +1,7 @@
 import { babel } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import terser from '@rollup/plugin-terser';
 import fileSize from "rollup-plugin-filesize";
 import typescript from "rollup-plugin-typescript2";
 import { readFile } from "fs/promises";
@@ -28,6 +29,7 @@ export default {
       babelHelpers: "bundled",
       presets: ["@babel/preset-env"],
     }),
+    terser(),
     fileSize(),
   ],
 };
