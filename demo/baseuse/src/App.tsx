@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Slider from "./Slider";
-import { observe } from "../../src/index";
+import { observe } from "../../../src/index";
 
 function App() {
   const [width, setWidth] = useState(200);
